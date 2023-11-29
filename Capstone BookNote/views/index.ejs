@@ -12,13 +12,15 @@
     />
     <title>Book Notes</title>
   </head>
-  <body >
+  <body class="font-family">
     <nav
       class="navbar navbar-expand-md navbar-dark bg-dark"
       aria-label="Fourth navbar example"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Book Notes</a>
+        <form action="/home" method="post">
+          <a class="navbar-brand" href="">Book Notes</a>
+        </form>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,10 +36,9 @@
         <div class="collapse navbar-collapse" id="navbarsExample04">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <form action="/home" method="post">
+                <a class="nav-link active" aria-current="page" href="">Home</a>
+              </form>
             </li>
           </ul>
         </div>
@@ -52,6 +53,9 @@
             This is a book notes website that saved the book that I've read before.
           </p>
         </div>
+        <form action="/addbook" method="post">
+          <input class="btn btn-success" type="submit" value="Add a book" name="book">
+        </form>
       </div>
     </section>
     </div>
@@ -63,26 +67,22 @@
             <div class="card shadow-sm">
               <div class="card-body">
                 <h3><%= book.book_title %></h3>
+                <small class="text-body-secondary">Date read: <%= (book.date_readed).toLocaleDateString('en-GB') %></small>
+                <small class="text-body-secondary">How strongly I recommend it: <%= book.book_rating %>/10</small>
                 <p class="card-text">
                     <%= book.book_description %>
                 </p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-warning"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-danger"
-                    >
-                      Delete
-                    </button>
+                    <form action="/edit" method="post">
+                      <input type="hidden" name="updatedBookId" value="<%=book.id%>"  >
+                      <input class="btn btn-warning" name="edit" type="submit" value="Edit" name="book">
+                    </form>
+                    <form action="/delete" method="post">
+                      <input type="hidden" name="deletedBookId" value="<%=book.id%>"  >
+                      <input class="btn btn-danger" name="delete" type="submit" value="Delete" name="book">
+                    </form>
                   </div>
-                  <small class="text-body-secondary"><%= book.book_rating %> <% console.log(book) %></small>
-                  <small class="text-body-secondary"><%= book.date_readed %></small>
                 </div>
               </div>
             </div>

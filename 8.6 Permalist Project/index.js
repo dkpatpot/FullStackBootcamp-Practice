@@ -37,6 +37,7 @@ app.post("/add",async (req, res) => {
 app.post("/edit",async (req, res) => {
   const updatedItem = req.body.updatedItemTitle;
   const updatedItemId = req.body.updatedItemId;
+  console.log(updatedItemId);
   await db.query("UPDATE items SET title=$1 WHERE id=$2",[updatedItem,updatedItemId]);
   res.redirect("/");
 });

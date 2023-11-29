@@ -1,5 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
 .background-gradient {
-    background: rgb(227,181,241);
-    background: linear-gradient(90deg, rgba(227,181,241,1) 0%, rgba(160,107,245,1) 35%, rgba(130,225,245,1) 100%);
-    
+  background: rgb(227, 181, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(227, 181, 241, 1) 0%,
+    rgba(160, 107, 245, 1) 35%,
+    rgba(130, 225, 245, 1) 100%
+  );
+}
+.font-family {
+  font-family: "Muli", sans-serif;
+}
+input[type="text"]:focus {
+  border: 3px solid grey;
+}
+input[type="text"]{
+    width: 30%;
+    border-radius: 5px;
+    padding: 12px 20px;
 }
